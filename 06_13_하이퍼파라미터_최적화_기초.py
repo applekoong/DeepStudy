@@ -16,6 +16,11 @@
 #    contrib에 있는 tpu 기능을 사용하기 때문에 외부 keras 모듈과 안 맞을 수 있음
 #    2.0이 되면 tf.keras와 연동할 수 있을 거라 추측
 #    그 동안은 tpu 사용 금지. keras 모듈 사용
+# 4. colab에서 실행할 때 talos, wrangle 설치
+#    !pip install talos, wrangle
+#    에러가 일부 있지만 동작한다. restart 필수.
+#    wrangle 대신 scikit-learn 대체 가능
+#    https://nbviewer.jupyter.org/github/autonomio/talos/blob/master/examples/Hyperparameter%20Optimization%20on%20Keras%20with%20Breast%20Cancer%20Data.ipynb
 
 import talos as ta
 import pandas as pd
