@@ -1,0 +1,30 @@
+tpu 사용법
+
+1. 세션 초기화
+tf.keras.backend.clear_session()
+
+2. tpu 모델로 변환
+tpu_model = tf.contrib.tpu.keras_to_tpu_model(
+    model,
+    strategy=tf.contrib.tpu.TPUDistributionStrategy(
+        tf.contrib.cluster_resolver.TPUClusterResolver(tpu='grpc://' + os.environ['COLAB_TPU_ADDR'])
+    )
+)
+
+3. 학습할 때, batch_size에 8 곱하기(1024 = 128 * 8)
+out = tpu_model.fit(
+    x, y, epochs=10, batch_size=1024,
+    verbose=0,
+    validation_data=[x_val, y_val]
+)
+
+4. 모델을 다시 cpu 버전으로 변환
+model = tpu_model.sync_to_cpu()
+
+---------------------------------
+
+참고 사이트
+1. rnn 20배 향상
+   https://www.dlology.com/blog/how-to-train-keras-model-x20-times-faster-with-tpu-for-free/
+2. cnn 3배 향상 : How to perform Keras hyperparameter optimization x3 faster on TPU for free
+   https://www.dlology.com/blog/how-to-perform-keras-hyperparameter-optimization-on-tpu-for-free/
