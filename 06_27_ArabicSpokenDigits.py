@@ -2,6 +2,7 @@
 # https://archive.ics.uci.edu/ml/datasets/Spoken+Arabic+Digit
 
 # 1. 오디오로부터 피처를 추출한 mfcc 텍스트 파일
+#    파일 용량이 커서 깃헙에 올라가지 않음. 위의 링크로부터 다운로드 받아서 audio 폴더에 복사.
 # 2. 학습/시험 : 75/25
 #    train : 6,600
 #    test  : 2,200
